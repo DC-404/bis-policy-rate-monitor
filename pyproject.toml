@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bis-policy-rate-monitor"
+version = "0.1.0"
+description = "BIS central bank policy rate monitor for the MED IT technical exercise"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.28,<1",
+  "typer>=0.15,<1",
+  "matplotlib>=3.9,<4",
+]
+
+[project.optional-dependencies]
+# environment.yml selects all three extras for the complete reviewer environment.
+dev = ["pytest>=8,<10", "ruff>=0.9,<1"]
+sdmx = ["pysdmx[xml]>=1.22,<2"]
+web = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1"]
+
+[project.scripts]
+bis-prates = "bis_policy_rate_monitor.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "BLE"]

@@ -1,0 +1,142 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #192f3a;
+  background: #f1f5f5;
+  color-scheme: light;
+  font-synthesis: none;
+  --muted: #506572;
+  --line: #dce6e8;
+  --accent: #086b67;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+a { color: var(--accent); text-underline-offset: 0.18em; }
+:focus-visible { outline: 2px solid #278783; outline-offset: 3px; }
+
+.shell { width: min(100% - 3rem, 74rem); margin-inline: auto; }
+.masthead {
+  padding: 2.35rem 0 2.05rem;
+  background: linear-gradient(115deg, #142d3d, #19494c);
+  color: #fff;
+  border-bottom: 3px solid #6daaa1;
+}
+
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.045em; line-height: 1.13; }
+h2 { font-size: 1.18rem; letter-spacing: -0.02em; line-height: 1.25; }
+.masthead p { color: #d9e8e9; margin-top: 0.58rem; font-size: 0.97rem; }
+main { padding-block: 1.35rem 2.5rem; }
+.panel { border: 1px solid var(--line); border-radius: 0.7rem; background: #fff; min-width: 0; }
+.panel-heading { padding: 1.1rem 1.25rem 0.95rem; }
+.panel-heading p { margin-top: 0.34rem; color: var(--muted); font-size: 0.88rem; }
+
+/* Keep the area selection, date and commands together on wide screens. */
+.filters {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1.1fr) minmax(11rem, 1fr) minmax(9rem, 0.65fr) auto;
+  gap: 0.55rem 0.95rem;
+  align-items: end;
+  padding: 1rem 1.25rem 0.85rem;
+}
+
+.filters label { display: grid; gap: 0.36rem; min-width: 0; font-size: 0.88rem; font-weight: 600; }
+.filters input, .filters select, .filters button { height: 2.65rem; border-radius: 0.38rem; }
+.filters input, .filters select {
+  min-width: 0;
+  width: 100%;
+  padding: 0.45rem 0.66rem;
+  border: 1px solid #aebfc4;
+  color: #192f3a;
+  background: #fff;
+  font-weight: 400;
+}
+
+.filters select:disabled { color: var(--muted); background: #f5f8f8; }
+.filters button {
+  padding: 0 1rem;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.filters button:hover:not(:disabled) { background: #075651; }
+.filters button:disabled { cursor: wait; opacity: 0.68; }
+.filter-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.filters button.secondary { background: #fff; color: var(--accent); }
+.filters button.secondary:hover:not(:disabled) { background: #e4f3ee; }
+.hint { grid-column: 1 / -1; color: var(--muted); font-size: 0.79rem; }
+
+.feedback { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 0.45rem; background: #e3eeee; }
+.feedback.error { color: #812a2f; background: #faedef; }
+.results { display: grid; gap: 1rem; margin-top: 1rem; }
+/* Let narrow screens pan the whole table without clipping dates or rates. */
+.table-scroll { overflow-x: auto; border-radius: 0 0 0.7rem 0.7rem; }
+table { width: 100%; min-width: 43rem; border-collapse: collapse; font-size: 0.89rem; }
+thead { background: #f1f6f6; }
+th, td { padding: 0.6rem 1.2rem; text-align: left; vertical-align: top; }
+thead th { color: #425965; font-weight: 650; white-space: nowrap; }
+tbody tr { border-top: 1px solid #e6eeee; }
+tbody th { min-width: 10rem; font-weight: 650; }
+tbody small, td time { display: block; margin-top: 0.18rem; font-size: 0.76rem; color: var(--muted); }
+.rate, .change { font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.muted { color: var(--muted); }
+.status-cell { width: 36%; }
+.status-cell p { margin-top: 0.25rem; color: var(--muted); font-size: 0.81rem; line-height: 1.38; }
+.status { display: inline-block; border-radius: 0.28rem; padding: 0.16rem 0.42rem; background: #eaf0f1; color: #3c5360; font-size: 0.75rem; font-weight: 650; }
+.status-ok { background: #e4f3ee; color: #21584a; }
+.status-series_blocked, .status-incompatible_units { background: #faeceb; color: #812a2f; }
+.status-insufficient_history, .status-no_valid_latest { background: #f8f0dc; color: #694c16; }
+
+/* Recharts measures this frame before it can size the SVG. */
+.chart-frame { height: clamp(16rem, 34vw, 22rem); min-width: 0; margin: 0 1.05rem; }
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.05rem;
+  margin: 0.55rem 1.25rem 1.15rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.84rem;
+}
+
+.chart-legend li, .chart-tooltip li { display: flex; align-items: center; gap: 0.35rem; }
+.chart-legend i, .chart-tooltip i { width: 0.78rem; height: 0.19rem; border-radius: 0.2rem; flex: none; }
+.chart-legend span { color: var(--muted); }
+.chart-key { margin: -0.45rem 1.25rem 1rem; color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
+.chart-tooltip {
+  background: #fff;
+  border: 1px solid #cbdadd;
+  border-radius: 0.45rem;
+  box-shadow: 0 4px 16px #19344718;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.81rem;
+}
+
+.chart-tooltip time { font-weight: 700; }
+.chart-tooltip ul { list-style: none; display: grid; gap: 0.15rem; margin: 0.35rem 0 0; padding: 0; }
+.chart-tooltip li span { margin-left: auto; padding-left: 0.55rem; font-weight: 600; }
+.chart-empty { padding: 1.35rem 1.25rem 1.65rem; color: var(--muted); }
+
+.source { padding: 1rem 1.25rem; font-size: 0.88rem; }
+.source p, .source ul, .source details { margin: 0.6rem 0 0; line-height: 1.5; }
+.source ul { padding-left: 1.25rem; color: var(--muted); }
+.source summary { color: var(--accent); cursor: pointer; }
+.source dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0.3rem 0.8rem; margin: 0.6rem 0 0; }
+.source dt { font-weight: 650; }
+.source dd { margin: 0; overflow-wrap: anywhere; } /* Long checksums stay inside the panel. */
+
+@media (max-width: 760px) {
+  .shell { width: calc(100% - 1.5rem); }
+  .filters { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  th, td { padding-inline: 0.85rem; }
+}
+
+@media (max-width: 400px) {
+  .filters { grid-template-columns: minmax(0, 1fr); }
+  .source dl { grid-template-columns: minmax(0, 1fr); }
+}

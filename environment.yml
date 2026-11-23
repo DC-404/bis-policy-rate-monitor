@@ -1,0 +1,10 @@
+# Conda supplies Python and Node. The editable install enables the full review setup.
+name: bis-prates
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - nodejs=24
+  - pip:
+      - "-e .[dev,sdmx,web]"

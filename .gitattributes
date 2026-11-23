@@ -1,0 +1,4 @@
+* text=auto eol=lf
+
+# Preserve the generated sample's CSV record terminators across Git clients.
+out/summary.csv -text whitespace=cr-at-eol

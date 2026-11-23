@@ -1,0 +1,9 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.venv/
+cache/
+*.tmp
+web/node_modules/
+# The verified frontend bundle is included with the submission.

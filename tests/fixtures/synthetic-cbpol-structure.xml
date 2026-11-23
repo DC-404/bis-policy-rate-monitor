@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message"
+               xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure"
+               xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+  <mes:Header>
+    <mes:ID>SYNTHETIC-CBPOL-STRUCTURE</mes:ID>
+    <mes:Test>true</mes:Test>
+    <mes:Prepared>2026-11-20T00:00:00Z</mes:Prepared>
+    <mes:Sender id="TEST"/>
+  </mes:Header>
+  <mes:Structures>
+    <str:Dataflows>
+      <str:Dataflow agencyID="BIS" id="WS_CBPOL" version="1.0">
+        <com:Name xml:lang="en">Synthetic CBPOL flow</com:Name>
+        <str:Structure>
+          <Ref agencyID="TEST" id="DS_CBPOL_TEST" version="2.0" package="datastructure" class="DataStructure"/>
+        </str:Structure>
+      </str:Dataflow>
+    </str:Dataflows>
+    <str:Codelists>
+      <str:Codelist agencyID="TEST" id="CL_FREQ_TEST" version="1.1">
+        <com:Name xml:lang="en">Synthetic frequency</com:Name>
+        <str:Code id="D"><com:Name xml:lang="en">Daily</com:Name></str:Code>
+        <str:Code id="M"><com:Name xml:lang="en">Monthly</com:Name></str:Code>
+      </str:Codelist>
+      <str:Codelist agencyID="TEST" id="CL_AREA_TEST" version="2.5">
+        <com:Name xml:lang="en">Synthetic reference area</com:Name>
+        <str:Code id="AF"><com:Name xml:lang="en">Afghanistan</com:Name></str:Code>
+        <str:Code id="US"><com:Name xml:lang="en">United States</com:Name></str:Code>
+        <str:Code id="XM"><com:Name xml:lang="en">Euro area</com:Name></str:Code>
+      </str:Codelist>
+    </str:Codelists>
+    <str:Concepts>
+      <str:ConceptScheme agencyID="TEST" id="CS_CBPOL_TEST" version="1.0">
+        <com:Name xml:lang="en">Synthetic CBPOL concepts</com:Name>
+        <str:Concept id="FREQ"><com:Name xml:lang="en">Frequency</com:Name></str:Concept>
+        <str:Concept id="REF_AREA"><com:Name xml:lang="en">Reference area</com:Name></str:Concept>
+        <str:Concept id="TIME_PERIOD"><com:Name xml:lang="en">Time period</com:Name></str:Concept>
+        <str:Concept id="OBS_VALUE"><com:Name xml:lang="en">Observation value</com:Name></str:Concept>
+      </str:ConceptScheme>
+    </str:Concepts>
+    <str:DataStructures>
+      <str:DataStructure agencyID="TEST" id="DS_CBPOL_TEST" version="2.0">
+        <com:Name xml:lang="en">Synthetic CBPOL structure</com:Name>
+        <str:DataStructureComponents>
+          <str:DimensionList>
+            <str:Dimension id="FREQ">
+              <str:ConceptIdentity>
+                <Ref agencyID="TEST" maintainableParentID="CS_CBPOL_TEST" maintainableParentVersion="1.0" id="FREQ" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref agencyID="TEST" id="CL_FREQ_TEST" version="1.1" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:Dimension>
+            <str:Dimension id="REF_AREA">
+              <str:ConceptIdentity>
+                <Ref agencyID="TEST" maintainableParentID="CS_CBPOL_TEST" maintainableParentVersion="1.0" id="REF_AREA" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref agencyID="TEST" id="CL_AREA_TEST" version="2.5" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:Dimension>
+            <str:TimeDimension id="TIME_PERIOD">
+              <str:ConceptIdentity>
+                <Ref agencyID="TEST" maintainableParentID="CS_CBPOL_TEST" maintainableParentVersion="1.0" id="TIME_PERIOD" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="ObservationalTimePeriod"/>
+              </str:LocalRepresentation>
+            </str:TimeDimension>
+          </str:DimensionList>
+          <str:MeasureList>
+            <str:PrimaryMeasure id="OBS_VALUE">
+              <str:ConceptIdentity>
+                <Ref agencyID="TEST" maintainableParentID="CS_CBPOL_TEST" maintainableParentVersion="1.0" id="OBS_VALUE" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+            </str:PrimaryMeasure>
+          </str:MeasureList>
+        </str:DataStructureComponents>
+      </str:DataStructure>
+    </str:DataStructures>
+  </mes:Structures>
+</mes:Structure>
